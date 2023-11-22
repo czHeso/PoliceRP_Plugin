@@ -7,12 +7,19 @@ The PoliceRP plugin has been updated with additional commands for better server 
 **Features**
 
 **Punishment System:** Track and manage player offenses with an easy-to-use system.
+
 **Additional Commands:**
+
 /prestupek [player]: Report a player for an offense.
+
 /propustit [player]: Release a player from jail.
+
 /policienabor [player]: Recruit a player into the police force.
+
 /policievyhazov [player]: Remove a player from the police force.
+
 **Permission System:** Ensure that only authorized personnel have access to the punishment command.
+
 
 **Installation**
 
