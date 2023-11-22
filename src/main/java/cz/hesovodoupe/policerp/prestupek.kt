@@ -172,6 +172,36 @@ object prestupek: CommandExecutor {
 
         }
 
+        if(commandString == "emsnabor")
+        {
+            if (!sender.hasPermission("ems.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl nabrán k zdravotníkům")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent add emsnew")
+            return true;
+
+
+        }
+
+        if(commandString == "emsvyhazov")
+        {
+            if (!sender.hasPermission("ems.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl vyhozen od zdravotníků")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent remove emsnew")
+            return true;
+
+
+        }
+
         return true
     }
 
