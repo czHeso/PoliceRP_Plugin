@@ -1,0 +1,19 @@
+name: PoliceRP
+version: '${version}'
+main: cz.hesovodoupe.policerp.PoliceRP
+api-version: '1.19'
+authors: [Heso]
+description: Command for POLICE RP
+website: snezik.cz
+
+commands:
+  prestupek:
+    description: Potrestej hrace za prestupek
+    usage: /<command>
+    permission: policerp.punish
+    permission-message: "Na tohle nemáš práva!"
+
+permissions:
+  policerp.punish:
+    description: "Slouží pro policejní složky"
+    default: false
