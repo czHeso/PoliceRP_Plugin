@@ -2,7 +2,7 @@
 
 **Overview**
 
-The PoliceRP plugin has been updated with additional commands for better server management. This plugin provides a simple punishment system for PoliceRP servers in Minecraft. It includes commands to report offenses, release players from jail, recruit players into the police force, and remove players from the police force.
+The PoliceRP plugin has undergone recent updates, introducing new commands to enhance server management. This plugin provides a straightforward punishment system for PoliceRP servers in Minecraft, featuring commands for reporting offenses, releasing players from jail, recruiting and removing players from various factions.
 
 **Features**
 
@@ -17,6 +17,19 @@ The PoliceRP plugin has been updated with additional commands for better server 
 /policienabor [player]: Recruit a player into the police force.
 
 /policievyhazov [player]: Remove a player from the police force.
+
+/hasicinabor [player]: Recruit a player into the firefighters.
+
+/hasicivyhazov [player]: Remove a player from the firefighters.
+
+/armynabor [player]: Recruit a player into the army.
+
+/armyvyhazov [player]: Remove a player from the army.
+
+/emsnabor [player]: Recruit a player into the EMS (Emergency Medical Services).
+
+/emsvyhazov [player]: Remove a player from the EMS.
+
 
 **Permission System:** Ensure that only authorized personnel have access to the punishment command.
 
@@ -76,12 +89,83 @@ Usage: /policievyhazov [player]
 Example: /policievyhazov FormerOfficer
 
 
+/hasicinabor [player]
+
+Description: Recruit a player into the firefighters.
+
+Permission: firerp.chief
+
+Usage: /hasicinabor [player]
+
+Example: /hasicinabor FirefighterRecruit
+
+
+/hasicivyhazov [player]
+
+Description: Remove a player from the firefighters.
+
+Permission: firerp.chief
+
+Usage: /hasicivyhazov [player]
+
+Example: /hasicivyhazov FormerFirefighter
+
+
+/armynabor [player]
+
+Description: Recruit a player into the army.
+
+Permission: policerp.chief
+
+Usage: /armynabor [player]
+
+Example: /armynabor NewSoldier
+
+
+/armyvyhazov [player]
+
+Description: Remove a player from the army.
+
+Permission: policerp.chief
+
+Usage: /armyvyhazov [player]
+
+Example: /armyvyhazov DischargedSoldier
+
+
+/emsnabor [player]
+
+Description: Recruit a player into the EMS (Emergency Medical Services).
+
+Permission: ems.chief
+
+Usage: /emsnabor [player]
+
+Example: /emsnabor NewMedic
+
+
+/emsvyhazov [player]
+
+Description: Remove a player from the EMS.
+
+Permission: ems.chief
+
+Usage: /emsvyhazov [player]
+
+Example: /emsvyhazov FormerMedic
+
+
+
 **Permissions**
 
 
 **policerp.punish**: Allows access to the /prestupek, /propustit, and other related commands.
 
 **policerp.chief**: Allows access to the /policienabor and /policievyhazov commands.
+
+**firerp.chief**: Allows access to firefighter-related commands.
+
+**ems.chief**: Allows access to EMS-related commands.
 
 
 **Usage**
