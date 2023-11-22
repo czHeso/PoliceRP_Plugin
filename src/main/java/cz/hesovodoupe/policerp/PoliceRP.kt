@@ -26,6 +26,12 @@ class PoliceRP : JavaPlugin() {
         getCommand("propustit")?.setExecutor(prestupek)
         getCommand("policienabor")?.setExecutor(prestupek)
         getCommand("policievyhazov")?.setExecutor(prestupek)
+        getCommand("hasicinabor")?.setExecutor(prestupek)
+        getCommand("hasicivyhazov")?.setExecutor(prestupek)
+        getCommand("armynabor")?.setExecutor(prestupek)
+        getCommand("armyvyhazov")?.setExecutor(prestupek)
+        getCommand("emsnabor")?.setExecutor(prestupek)
+        getCommand("emsvyhazov")?.setExecutor(prestupek)
 
     }
 
