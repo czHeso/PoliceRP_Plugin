@@ -9,11 +9,29 @@ website: snezik.cz
 commands:
   prestupek:
     description: Potrestej hrace za prestupek
-    usage: /<command>
+    usage: /<command> [nick]
     permission: policerp.punish
+    permission-message: "Na tohle nemáš práva!"
+  propustit:
+    description: Propust hráče z jailu
+    usage: /<command> [nick]
+    permission: policerp.punish
+    permission-message: "Na tohle nemáš práva!"
+  policienabor:
+    description: Nabrat k policii
+    usage: /<command> [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
+  policievyhazov:
+    description: Vyhodit od policie
+    usage: /<command> [nick]
+    permission: policerp.chief
     permission-message: "Na tohle nemáš práva!"
 
 permissions:
   policerp.punish:
     description: "Slouží pro policejní složky"
+    default: false
+  policerp.chief:
+    description: "Slouží pro vedení policie"
     default: false

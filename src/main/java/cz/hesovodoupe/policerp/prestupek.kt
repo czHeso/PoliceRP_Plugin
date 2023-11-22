@@ -9,53 +9,108 @@ import org.bukkit.command.CommandSender
 
 object prestupek: CommandExecutor {
     override fun onCommand(sender: CommandSender, cmd: Command, p2: String, args: Array<out String>?): Boolean {
+        val trestany = args?.get(0).toString()
 
-        if (!sender.hasPermission("policerp.punish")) {
-            sender.sendMessage("Na tohle nemáš práva!")
-            return false;
+        val commandString = cmd.name.toString()
 
-        }
-
-        if (args == null)
+        if(commandString == "prestupek")
         {
-            sender.sendMessage("Musíš napsat nick toho, kdo udělal přestupek.")
-            return false
+            if (!sender.hasPermission("policerp.punish")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            if (args == null)
+            {
+                sender.sendMessage("Musíš napsat nick toho, kdo udělal přestupek.")
+                return false
+            }
+            sender.sendMessage(" ")
+
+            val hodnota = 1
+            println("$sender issued command to $cmd")
+
+            if(!databaze.containsKey(trestany))
+            {
+
+                databaze[trestany] = hodnota
+                sender.sendMessage("Toto je přestupek hráče $trestany! Děkujeme za nahlášení.")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš první nahlášený přestupek od $sender")
+
+            }
+            else {
+                var jizTrestanHodnota: Int = databaze[trestany]!!
+                jizTrestanHodnota = jizTrestanHodnota + 1
+                sender.sendMessage("Toto je $jizTrestanHodnota přestupek hráče $trestany!")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš $jizTrestanHodnota přestupků. Poslední nahlášený od $sender")
+
+                if(jizTrestanHodnota >9)
+                {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail $trestany 10m Policie 1")
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Již máš $jizTrestanHodnota přestupků. Jdeš do jailu!")
+                    jizTrestanHodnota = 0
+                }
+
+                databaze[trestany] = jizTrestanHodnota
+
+            }
+
+
+
+
+
+            return true
+
+
+
+
         }
-         sender.sendMessage(" ")
 
-         val trestany = args?.get(0).toString()
-         val hodnota = 1
-         println("$sender issued command to $cmd")
+        if(commandString == "propustit")
+        {
+            if (!sender.hasPermission("policerp.punish")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
 
-         if(!databaze.containsKey(trestany))
-         {
+            }
 
-             databaze[trestany] = hodnota
-             sender.sendMessage("Toto je přestupek hráče $trestany! Děkujeme za nahlášení.")
-             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš první nahlášený přestupek od $sender")
-
-         }
-         else {
-             var jizTrestanHodnota: Int = databaze[trestany]!!
-             jizTrestanHodnota = jizTrestanHodnota + 1
-             sender.sendMessage("Toto je $jizTrestanHodnota přestupek hráče $trestany!")
-             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš $jizTrestanHodnota přestupků. Poslední nahlášený od $sender")
-
-             if(jizTrestanHodnota >9)
-             {
-                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail $trestany 10m Policie 1")
-                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Již máš $jizTrestanHodnota přestupků. Jdeš do jailu!")
-                 jizTrestanHodnota = 0
-             }
-
-             databaze[trestany] = jizTrestanHodnota
-
-         }
+            sender.sendMessage("Hráč $trestany! Byl propuštěn")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "unjail $trestany")
+            return true;
 
 
+        }
+
+        if(commandString == "policienabor")
+        {
+            if (!sender.hasPermission("policerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl nabrán k policii")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent add policene")
+            return true;
 
 
+        }
 
+        if(commandString == "policievyhazov")
+        {
+            if (!sender.hasPermission("policerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl vyhozen od policie")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent remove policene")
+            return true;
+
+
+        }
         return true
     }
 

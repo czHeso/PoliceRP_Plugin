@@ -18,12 +18,14 @@ class PoliceRP : JavaPlugin() {
 
     override fun onDisable() {
         getLogger().info("Plugin se vypíná")
-        getLogger().info("Probíhá ukládání databáze")
 
     }
 
     private fun registerCommands() {
         getCommand("prestupek")?.setExecutor(prestupek)
+        getCommand("propustit")?.setExecutor(prestupek)
+        getCommand("policienabor")?.setExecutor(prestupek)
+        getCommand("policievyhazov")?.setExecutor(prestupek)
 
     }
 
