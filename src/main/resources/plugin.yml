@@ -27,11 +27,34 @@ commands:
     usage: /<command> [nick]
     permission: policerp.chief
     permission-message: "Na tohle nemáš práva!"
+  hasicinabor:
+    description: Nabrat k policii
+    usage: /<command> [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
+  hasicivyhazov:
+    description: Vyhodit od policie
+    usage: /<command> [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
+  armynabor:
+    description: Nabrat k policii
+    usage: /<command> [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
+  armyvyhazov:
+    description: Vyhodit od policie
+    usage: /<command> [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
 
 permissions:
   policerp.punish:
     description: "Slouží pro policejní složky"
     default: false
   policerp.chief:
+    description: "Slouží pro vedení policie"
+    default: false
+  firerp.chief:
     description: "Slouží pro vedení policie"
     default: false

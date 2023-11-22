@@ -111,6 +111,67 @@ object prestupek: CommandExecutor {
 
 
         }
+
+        if(commandString == "hasicinabor")
+        {
+            if (!sender.hasPermission("firerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl nabrán k hasičům")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent add hasicnew")
+            return true;
+
+
+        }
+
+        if(commandString == "hasicivyhazov")
+        {
+            if (!sender.hasPermission("firerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl vyhozen od hasičů")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent remove hasicnew")
+            return true;
+
+
+        }
+
+        if(commandString == "armynabor")
+        {
+            if (!sender.hasPermission("policerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl nabrán k armádě")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent add armynew")
+            return true;
+
+
+        }
+
+        if(commandString == "armyvyhazov")
+        {
+            if (!sender.hasPermission("policerp.chief")) {
+                sender.sendMessage("Na tohle nemáš práva!")
+                return false;
+
+            }
+
+            sender.sendMessage("Hráč $trestany byl vyhozen od armády")
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $trestany parent remove armynew")
+            return true;
+
+
+        }
+
         return true
     }
 
