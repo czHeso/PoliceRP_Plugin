@@ -6,5 +6,5 @@ The PoliceRP plugin has been updated to include new functionality. Two essential
 
 **/nabor Command**
 
-> Description
-Recruit a player into a specific role.
+**Description**
+> Recruit a player into a specific role.
