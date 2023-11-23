@@ -17,44 +17,9 @@ commands:
     usage: /<command> [nick]
     permission: policerp.punish
     permission-message: "Na tohle nemáš práva!"
-  policienabor:
+  nabor:
     description: Nabrat k policii
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  policievyhazov:
-    description: Vyhodit od policie
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  hasicinabor:
-    description: Nabrat k policii
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  hasicivyhazov:
-    description: Vyhodit od policie
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  armynabor:
-    description: Nabrat k policii
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  armyvyhazov:
-    description: Vyhodit od policie
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  emsnabor:
-    description: Nabrat k policii
-    usage: /<command> [nick]
-    permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  emsvyhazov:
-    description: Vyhodit od policie
-    usage: /<command> [nick]
+    usage: /<command> [ems/pd/fire/army] [nick]
     permission: policerp.chief
     permission-message: "Na tohle nemáš práva!"
 
