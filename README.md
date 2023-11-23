@@ -8,3 +8,5 @@ The PoliceRP plugin has been updated to include new functionality. Two essential
 
 **Description**
 > Recruit a player into a specific role.
+> **Permissions**
+> **policerp.chief**: Allows access to the command.
