@@ -18,7 +18,12 @@ commands:
     permission: policerp.punish
     permission-message: "Na tohle nemáš práva!"
   nabor:
-    description: Nabrat k policii
+    description: Nabrat do práce
+    usage: /<command> [ems/pd/fire/army] [nick]
+    permission: policerp.chief
+    permission-message: "Na tohle nemáš práva!"
+  vyhazov:
+    description: Vyhodit z práce
     usage: /<command> [ems/pd/fire/army] [nick]
     permission: policerp.chief
     permission-message: "Na tohle nemáš práva!"

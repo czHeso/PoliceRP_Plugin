@@ -26,6 +26,7 @@ class PoliceRP : JavaPlugin() {
         getCommand("prestupek")?.setExecutor(prestupek)
         getCommand("propustit")?.setExecutor(prestupek)
         getCommand("nabor")?.setExecutor(nabor)
+        getCommand("vyhazov")?.setExecutor(vyhazov)
 
     }
 
