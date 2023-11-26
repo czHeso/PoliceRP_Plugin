@@ -1,0 +1,14 @@
+# Set name of the "parent group" of the job from LuckPerms to set for player/unset
+nabor:
+  ems: emsnew
+  pd: policene
+  fire: hasicnew
+  army: armynew
+
+prestupky:
+  # How many offenses does he have to commit to go to jail?
+  pocet: 9
+  # For how long go to jail? (In Minutes)
+  time: 15
+  # Name of the Jail
+  jail: Policie

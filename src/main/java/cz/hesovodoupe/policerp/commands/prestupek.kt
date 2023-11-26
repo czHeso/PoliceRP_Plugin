@@ -1,5 +1,6 @@
-package cz.hesovodoupe.policeroleplay
+package cz.hesovodoupe.policerp.commands
 
+import cz.hesovodoupe.policerp.ConfigManager
 import cz.hesovodoupe.policerp.databaze
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -30,6 +31,9 @@ object prestupek: CommandExecutor {
 
             val hodnota = 1
             println("$sender issued command to $cmd")
+            val pocetPrestupku = ConfigManager.prestupky.toInt()
+            val casJailu = ConfigManager.casJail.toInt()
+            val jailName = ConfigManager.jailName.toString()
 
             if(!databaze.containsKey(trestany))
             {
@@ -45,9 +49,9 @@ object prestupek: CommandExecutor {
                 sender.sendMessage("Toto je $jizTrestanHodnota přestupek hráče $trestany!")
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš $jizTrestanHodnota přestupků. Poslední nahlášený od $sender")
 
-                if(jizTrestanHodnota >9)
+                if(jizTrestanHodnota > pocetPrestupku)
                 {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail $trestany 10m Policie 1")
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail $trestany ${casJailu}m $jailName")
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Již máš $jizTrestanHodnota přestupků. Jdeš do jailu!")
                     jizTrestanHodnota = 0
                 }

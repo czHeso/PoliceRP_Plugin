@@ -1,7 +1,11 @@
+package cz.hesovodoupe.policerp.commands
+
+import cz.hesovodoupe.policerp.ConfigManager
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.configuration.file.FileConfiguration
 
 object nabor : CommandExecutor {
 
@@ -29,26 +33,30 @@ object nabor : CommandExecutor {
 
                 when (prace) {
                     "ems" -> {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add emsnew")
-                        sender.sendMessage("Hráči $hrac byla nahozena role EMS")
+                        val hireValue = ConfigManager.emsHireValue.toString()
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add $hireValue")
+                        sender.sendMessage("Hráči $hrac byla nahozena role $hireValue")
                         // ADD EMS JOB
                         return true
                     }
                     "pd" -> {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add policene")
-                        sender.sendMessage("Hráči $hrac byla nahozena role EMS")
+                        val hireValue = ConfigManager.pdHireValue.toString()
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add $hireValue")
+                        sender.sendMessage("Hráči $hrac byla nahozena role $hireValue")
                         // ADD PD JOB
                         return true
                     }
                     "fire" -> {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add hasicinew")
-                        sender.sendMessage("Hráči $hrac byla nahozena role EMS")
+                        val hireValue = ConfigManager.fireHireValue.toString()
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add $hireValue")
+                        sender.sendMessage("Hráči $hrac byla nahozena role $hireValue")
                         // ADD FIRE JOB
                         return true
                     }
                     "army" -> {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add armynew")
-                        sender.sendMessage("Hráči $hrac byla nahozena role EMS")
+                        val hireValue = ConfigManager.armyHireValue.toString()
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent add $hireValue")
+                        sender.sendMessage("Hráči $hrac byla nahozena role $hireValue")
                         // ADD ARMY JOB
                         return true
                     }
