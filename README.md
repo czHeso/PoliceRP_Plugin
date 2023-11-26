@@ -4,28 +4,16 @@
 
 **Overview**
 
-The PoliceRP plugin is a custom plugin designed for POLICE RP servers. It introduces essential commands for managing player offenses, handling jail releases, recruiting players into specific jobs, and dismissing them from their roles.
+The PoliceRP Plugin is a simple Minecraft plugin designed for PoliceRP servers. The plugin provides a punishment system and additional functionality for managing the police force on the server.
 
 ****Features****
 
-**Commands**
 
-1. /prestupek
-   > Description: Issue a penalty to a player for an offense.
-   > Usage: /prestupek [nick]
-   > Permission: policerp.punish
-2. /propustit
-   > Description: Release a player from jail.
-   > Usage: /propustit [nick]
-   > Permission: policerp.punish
-3. /nabor
-   > Description: Recruit a player into a job.
-   > Usage: /nabor [ems/pd/fire/army] [nick]
-   > Permission: policerp.chief
-4. /vyhazov
-   > Description: Dismiss a player from a job.
-   > Usage: /vyhazov [ems/pd/fire/army] [nick]
-   > Permission: policerp.chief
+> Punishment system for managing offenses
+> 
+> Recruitment system for adding new members to factions (EMS, PD, Fire, Army)
+> 
+> Configurable values for plugin settings
 
 **Permissions**
 1. policerp.punish:

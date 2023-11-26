@@ -67,21 +67,25 @@ class PoliceRP : JavaPlugin() {
 
     fun loadDbprestupky() {
         // Načtení konfiguračního souboru
-        cfg.load(f)
 
-        // Vyčištění stávající databáze
-        databaze.clear()
+        if(f.exists()){
+            cfg.load(f)
 
-        // Iterace přes všechny klíče v konfiguraci
-        for (key in cfg.getKeys(false)) {
-            // Získání hodnoty pro daný klíč
-            val value = cfg.getInt(key)
+            // Vyčištění stávající databáze
+            databaze.clear()
 
-            // Aktualizace databáze
-            databaze[key] = value
+            // Iterace přes všechny klíče v konfiguraci
+            for (key in cfg.getKeys(false)) {
+                // Získání hodnoty pro daný klíč
+                val value = cfg.getInt(key)
+
+                // Aktualizace databáze
+                databaze[key] = value
+            }
+
+            getLogger().info("DB Loaded")
         }
-
-        getLogger().info("DB Loaded")
+        return;
     }
 
 
