@@ -24,8 +24,8 @@ class PoliceRP : JavaPlugin() {
     val f: File = File(dataFolder, "prestupky_db.yml")
     val cfg = YamlConfiguration.loadConfiguration(f)
     override fun onEnable() {
-        println("Děkujeme, že využíváte náš jednoduchý trestací systém pro PoliceRP")
-        println("Upozorňujeme, že policisté musí mít právo na PoliceRP.punish")
+        println("Thank you for using our simple punishment system for PoliceRP")
+        println("Note that police officers must have the right to PoliceRP.punish")
 
         saveDefaultConfig()
         loadDbprestupky()
@@ -44,7 +44,7 @@ class PoliceRP : JavaPlugin() {
     }
 
     override fun onDisable() {
-        getLogger().info("Plugin se vypíná")
+        getLogger().info("Plugin is shutting down")
         saveDbprestupky()
     }
 
