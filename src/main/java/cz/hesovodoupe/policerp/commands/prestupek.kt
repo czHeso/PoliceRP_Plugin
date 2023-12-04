@@ -14,17 +14,17 @@ object prestupek: CommandExecutor {
 
         val commandString = cmd.name.toString()
 
-        if(commandString == "prestupek")
+        if(commandString == "felony")
         {
             if (!sender.hasPermission("policerp.punish")) {
-                sender.sendMessage("Na tohle nemáš práva!")
+                sender.sendMessage("You dont have permissions!")
                 return false;
 
             }
 
             if (args == null)
             {
-                sender.sendMessage("Musíš napsat nick toho, kdo udělal přestupek.")
+                sender.sendMessage("You have to type a player nick.")
                 return false
             }
             sender.sendMessage(" ")
@@ -39,20 +39,20 @@ object prestupek: CommandExecutor {
             {
 
                 databaze[trestany] = hodnota
-                sender.sendMessage("Toto je přestupek hráče $trestany! Děkujeme za nahlášení.")
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš první nahlášený přestupek od $sender")
+                sender.sendMessage("This is a violation of player $trestany! Thanks for reporting.")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Now you have the first reported offense from ${sender.name}")
 
             }
             else {
                 var jizTrestanHodnota: Int = databaze[trestany]!!
                 jizTrestanHodnota = jizTrestanHodnota + 1
                 sender.sendMessage("Toto je $jizTrestanHodnota přestupek hráče $trestany!")
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Nyní máš $jizTrestanHodnota přestupků. Poslední nahlášený od $sender")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany You now have $jizTrestanHodnota value of offenses. Last reported by ${sender.name}")
 
                 if(jizTrestanHodnota > pocetPrestupku)
                 {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail $trestany ${casJailu}m $jailName")
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany Již máš $jizTrestanHodnota přestupků. Jdeš do jailu!")
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany You already have $jizTrestanHodnota of offenses. You're going to jail!!")
                     jizTrestanHodnota = 0
                 }
 

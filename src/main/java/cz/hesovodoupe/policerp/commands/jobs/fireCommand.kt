@@ -1,4 +1,4 @@
-package cz.hesovodoupe.policerp.commands
+package cz.hesovodoupe.policerp.commands.jobs
 
 import cz.hesovodoupe.policerp.ConfigManager
 import org.bukkit.Bukkit
@@ -6,18 +6,18 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 
-object vyhazov  : CommandExecutor {
+object fireCommand  : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, cmd: Command, p2: String, args: Array<out String>?): Boolean {
         val commandString = cmd.name
 
-        if (commandString == "vyhazov") {
+        if (commandString == "fire") {
 
             if (sender.hasPermission("policerp.chief")) {
 
                 if (args == null || args.size < 2) {
-                    sender.sendMessage("V příkazu chybí nějaké důležité informace!")
-                    sender.sendMessage("Použití: /vyhazov [ems,pd,fire,army] [nick]")
+                    sender.sendMessage("The command is missing some important information!")
+                    sender.sendMessage("Usage: /fire [Police,Ems,Fire,Army] [nick]")
                     return false
                 }
 
@@ -25,49 +25,49 @@ object vyhazov  : CommandExecutor {
                 val hrac = args[1]
 
                 if (hrac.isEmpty() || prace.isEmpty()) {
-                    sender.sendMessage("V příkazu chybí nějaké důležité informace!")
-                    sender.sendMessage("Použití: /vyhazov [ems,pd,fire,army] [nick]")
+                    sender.sendMessage("The command is missing some important information!")
+                    sender.sendMessage("Usage: /fire [Police,Ems,Fire,Army] [nick]")
                     return false
                 }
 
                 when (prace) {
-                    "ems" -> {
+                    "Ems" -> {
                         val hireValue = ConfigManager.emsHireValue.toString()
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent remove $hireValue")
-                        sender.sendMessage("Hráči $hrac byla sebrána role $hireValue")
+                        sender.sendMessage("Role for $hrac has been revoken: $hireValue")
                         // ADD EMS JOB
                         return true
                     }
-                    "pd" -> {
+                    "Police" -> {
                         val hireValue = ConfigManager.pdHireValue.toString()
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent remove $hireValue")
-                        sender.sendMessage("Hráči $hrac byla sebrána role $hireValue")
+                        sender.sendMessage("Role for $hrac has been revoken: $hireValue")
                         // ADD PD JOB
                         return true
                     }
-                    "fire" -> {
+                    "Fire" -> {
                         val hireValue = ConfigManager.fireHireValue.toString()
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent remove $hireValue")
-                        sender.sendMessage("Hráči $hrac byla sebrána role $hireValue")
+                        sender.sendMessage("Role for $hrac has been revoken: $hireValue")
                         // ADD FIRE JOB
                         return true
                     }
-                    "army" -> {
+                    "Army" -> {
                         val hireValue = ConfigManager.armyHireValue.toString()
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $hrac parent remove $hireValue")
-                        sender.sendMessage("Hráči $hrac byla sebrána role $hireValue")
+                        sender.sendMessage("Role for $hrac has been revoken: $hireValue")
                         // ADD ARMY JOB
                         return true
                     }
                     else -> {
-                        sender.sendMessage("Nebyla uvedena správná hodnota.")
-                        sender.sendMessage("Použití: /vyhazov [ems,pd,fire,army] [nick]")
+                        sender.sendMessage("The command is missing some important information!")
+                        sender.sendMessage("Usage: /fire [Police,Ems,Fire,Army] [nick]")
                         return false
                     }
                 }
 
             } else {
-                sender.sendMessage("Na tohle nemáš práva!")
+                sender.sendMessage("You dont have permissions!")
                 return true
             }
 

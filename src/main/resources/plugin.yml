@@ -7,26 +7,26 @@ description: Command for POLICE RP
 website: snezik.cz
 
 commands:
-  prestupek:
-    description: Potrestej hrace za prestupek
+  felony:
+    description: Felony player
     usage: /<command> [nick]
     permission: policerp.punish
-    permission-message: "Na tohle nemáš práva!"
+    permission-message: "You dont have permissions!"
   propustit:
     description: Propust hráče z jailu
     usage: /<command> [nick]
     permission: policerp.punish
     permission-message: "Na tohle nemáš práva!"
-  nabor:
-    description: Nabrat do práce
+  hire:
+    description: Hire to job
     usage: /<command> [ems/pd/fire/army] [nick]
     permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
-  vyhazov:
-    description: Vyhodit z práce
+    permission-message: "You dont have permissions!"
+  fire:
+    description: Fire from job
     usage: /<command> [ems/pd/fire/army] [nick]
     permission: policerp.chief
-    permission-message: "Na tohle nemáš práva!"
+    permission-message: "You dont have permissions!"
 
 permissions:
   policerp.punish:

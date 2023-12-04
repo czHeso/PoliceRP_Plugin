@@ -1,8 +1,9 @@
 package cz.hesovodoupe.policerp
 
-import cz.hesovodoupe.policerp.commands.nabor
-import cz.hesovodoupe.policerp.commands.prestupek
-import cz.hesovodoupe.policerp.commands.vyhazov
+import cz.hesovodoupe.policerp.commands.*
+import cz.hesovodoupe.policerp.commands.jobs.fireCommand
+import cz.hesovodoupe.policerp.commands.jobs.hireCommand
+import cz.hesovodoupe.policerp.commands.jobs.hireCommandTab
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
@@ -48,10 +49,12 @@ class PoliceRP : JavaPlugin() {
     }
 
     private fun registerCommands() {
-        getCommand("prestupek")?.setExecutor(prestupek)
+        getCommand("felony")?.setExecutor(prestupek)
         getCommand("propustit")?.setExecutor(prestupek)
-        getCommand("nabor")?.setExecutor(nabor)
-        getCommand("vyhazov")?.setExecutor(vyhazov)
+        getCommand("hire")?.setExecutor(hireCommand)
+        getCommand("hire")?.setTabCompleter(hireCommandTab)
+        getCommand("fire")?.setExecutor(fireCommand)
+        getCommand("fire")?.setTabCompleter(hireCommandTab)
 
 
     }
