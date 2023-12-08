@@ -1,5 +1,6 @@
 package cz.hesovodoupe.policerp
 
+import cz.hesovodoupe.policerp.Metrics.SimplePie
 import cz.hesovodoupe.policerp.commands.jobs.fireCommand
 import cz.hesovodoupe.policerp.commands.jobs.hireCommand
 import cz.hesovodoupe.policerp.commands.jobs.hireCommandTab
@@ -38,6 +39,9 @@ class PoliceRP : JavaPlugin() {
         loadDbprestupky()
         loadDbGuns()
 
+        val pluginId = 113732
+        val metrics = Metrics(this, pluginId)
+        metrics.addCustomChart(SimplePie("chart_id") { "My value" })
 
 
 
