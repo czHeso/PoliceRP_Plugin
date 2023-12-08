@@ -27,6 +27,11 @@ commands:
     usage: /<command> [ems/pd/fire/army] [nick]
     permission: policerp.chief
     permission-message: "You dont have permissions!"
+  license:
+    description: Info about players license
+    usage: /<command> [show/set] [nick]
+    permission: policerp.punish
+    permission-message: "You dont have permissions!"
 
 permissions:
   policerp.punish:
