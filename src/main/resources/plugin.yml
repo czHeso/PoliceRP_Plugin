@@ -44,3 +44,6 @@ permissions:
     default: false
   ems.chief:
     default: false
+  wanted:
+    description: "Works just fine"
+    default: false

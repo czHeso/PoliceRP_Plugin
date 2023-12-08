@@ -7,7 +7,14 @@ import cz.hesovodoupe.policerp.commands.jobs.hireCommandTab
 import cz.hesovodoupe.policerp.commands.jobs.licenseCommand
 import cz.hesovodoupe.policerp.commands.licenseCommandTab
 import cz.hesovodoupe.policerp.commands.prestupek
+import org.bukkit.Bukkit
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.event.entity.PlayerDeathEvent
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -24,7 +31,7 @@ object ConfigManager {
     var jailName: String = ""
 }
 
-class PoliceRP : JavaPlugin() {
+class PoliceRP : JavaPlugin(), Listener {
     public val felony_db: File = File(dataFolder, "felony_db.yml")
     public val gun_licenses_db: File = File(dataFolder, "gun_licenses_db.yml")
 
@@ -38,6 +45,7 @@ class PoliceRP : JavaPlugin() {
         registerCommands()
         loadDbprestupky()
         loadDbGuns()
+        server.pluginManager.registerEvents(this, this)
 
         val pluginId = 113732
         val metrics = Metrics(this, pluginId)
@@ -140,5 +148,44 @@ class PoliceRP : JavaPlugin() {
             getLogger().info("Guns_DB Loaded")
         }
         return;
+    }
+
+    @EventHandler
+    fun onPlayerDeath(event: PlayerDeathEvent) {
+        val player: Player = event.entity
+        val drops: List<ItemStack> = event.drops
+        val droppedExp: Int = event.droppedExp
+        val newExp: Int = event.newExp
+        val newTotalExp: Int = event.newTotalExp
+        val newLevel: Int = event.newLevel
+        val deathMessage: String? = event.deathMessage
+        val killerName = event.player.killer?.name
+
+        val pocetPrestupku = ConfigManager.prestupky.toInt()
+        val casJailu = ConfigManager.casJail.toInt()
+        val jailName = ConfigManager.jailName.toString()
+
+        println("$player has been killed by $killerName")
+
+
+        if (!event.player.killer?.hasPermission("policerp.punish")!!) {
+            if (killerName == null)
+            {
+                return;
+            }
+            else {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $killerName parent addtemp wanted 10m")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc $killerName is wanted for murder ${player.name}")
+
+            }
+        }
+        else {
+            if (player.hasPermission("wanted")!!)
+            {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc ${player.name} he was caught and sent to prison")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail ${player.name} ${casJailu}m $jailName")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} parent removetemp wanted")
+            }
+        }
     }
 }
