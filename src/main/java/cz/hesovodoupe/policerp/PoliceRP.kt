@@ -12,7 +12,6 @@ import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
@@ -29,6 +28,9 @@ object ConfigManager {
     var prestupky: String = ""
     var casJail: String = ""
     var jailName: String = ""
+    var wantedValue: String = ""
+    var wantedMessage: String = ""
+    var caughtMessage: String = ""
 }
 
 class PoliceRP : JavaPlugin(), Listener {
@@ -49,17 +51,18 @@ class PoliceRP : JavaPlugin(), Listener {
 
         val pluginId = 113732
         val metrics = Metrics(this, pluginId)
-        metrics.addCustomChart(SimplePie("chart_id") { "My value" })
-
-
+        metrics
 
         ConfigManager.emsHireValue = config.getString("nabor.ems").toString()
         ConfigManager.pdHireValue = config.getString("nabor.pd").toString()
         ConfigManager.fireHireValue = config.getString("nabor.fire").toString()
         ConfigManager.armyHireValue = config.getString("nabor.army").toString()
+        ConfigManager.wantedValue = config.getString("nabor.wanted").toString()
         ConfigManager.prestupky = config.getString("prestupky.pocet").toString()
         ConfigManager.casJail = config.getString("prestupky.time").toString()
         ConfigManager.jailName = config.getString("prestupky.jail").toString()
+        ConfigManager.wantedMessage = config.getString("messages.wanted").toString()
+        ConfigManager.caughtMessage = config.getString("messages.caught").toString()
 
 
 
@@ -164,8 +167,13 @@ class PoliceRP : JavaPlugin(), Listener {
         val pocetPrestupku = ConfigManager.prestupky.toInt()
         val casJailu = ConfigManager.casJail.toInt()
         val jailName = ConfigManager.jailName.toString()
+        val wantedValue = ConfigManager.wantedValue.toString()
+        val wantedMessage = ConfigManager.wantedMessage
+        val caughtMessage = ConfigManager.caughtMessage
 
         println("$player has been killed by $killerName")
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp creategroup $wantedValue")
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp group $wantedValue permission set wanted")
 
 
         if (!event.player.killer?.hasPermission("policerp.punish")!!) {
@@ -174,17 +182,17 @@ class PoliceRP : JavaPlugin(), Listener {
                 return;
             }
             else {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $killerName parent addtemp wanted 10m")
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc $killerName is wanted for murder ${player.name}")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user $killerName parent addtemp $wantedValue 10m")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc $killerName $wantedMessage ${player.name}")
 
             }
         }
         else {
             if (player.hasPermission("wanted")!!)
             {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc ${player.name} he was caught and sent to prison")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc ${player.name} $caughtMessage")
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jail ${player.name} ${casJailu}m $jailName")
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} parent removetemp wanted")
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} parent removetemp $wantedValue")
             }
         }
     }

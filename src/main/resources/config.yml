@@ -4,6 +4,7 @@ nabor:
   pd: policene
   fire: hasicnew
   army: armynew
+  wanted: wanted
 
 prestupky:
   # How many offenses does he have to commit to go to jail?
@@ -12,3 +13,8 @@ prestupky:
   time: 15
   # Name of the Jail
   jail: Policie
+
+#Still in develop
+messages:
+  wanted: "is wanted for murder"
+  caught: "was caught and sent to prison"
