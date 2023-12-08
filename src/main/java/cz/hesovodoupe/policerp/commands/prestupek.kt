@@ -46,7 +46,7 @@ object prestupek: CommandExecutor {
             else {
                 var jizTrestanHodnota: Int = databaze[trestany]!!
                 jizTrestanHodnota = jizTrestanHodnota + 1
-                sender.sendMessage("Toto je $jizTrestanHodnota přestupek hráče $trestany!")
+                sender.sendMessage("This is $jizTrestanHodnota offense value of player $trestany!")
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "msg $trestany You now have $jizTrestanHodnota value of offenses. Last reported by ${sender.name}")
 
                 if(jizTrestanHodnota > pocetPrestupku)
@@ -71,15 +71,15 @@ object prestupek: CommandExecutor {
 
         }
 
-        if(commandString == "propustit")
+        if(commandString == "release")
         {
             if (!sender.hasPermission("policerp.punish")) {
-                sender.sendMessage("Na tohle nemáš práva!")
+                sender.sendMessage("You have no rights to this!")
                 return false;
 
             }
 
-            sender.sendMessage("Hráč $trestany! Byl propuštěn")
+            sender.sendMessage("Player $trestany was released")
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "unjail $trestany")
             return true;
 

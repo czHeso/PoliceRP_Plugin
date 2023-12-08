@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'cz.hesovodoupe'
-version = '8.0'
+version = '8.5'
 
 repositories {
     mavenCentral()

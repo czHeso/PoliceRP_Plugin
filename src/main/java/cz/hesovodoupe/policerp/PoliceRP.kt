@@ -61,7 +61,7 @@ class PoliceRP : JavaPlugin() {
 
     private fun registerCommands() {
         getCommand("felony")?.setExecutor(prestupek)
-        getCommand("propustit")?.setExecutor(prestupek)
+        getCommand("release")?.setExecutor(prestupek)
 
         getCommand("hire")?.setExecutor(hireCommand)
         getCommand("hire")?.setTabCompleter(hireCommandTab)
