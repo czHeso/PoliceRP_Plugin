@@ -12,7 +12,7 @@ commands:
     usage: /<command> [nick]
     permission: policerp.punish
     permission-message: "You dont have permissions!"
-  propustit:
+  release:
     description: Propust hráče z jailu
     usage: /<command> [nick]
     permission: policerp.punish
