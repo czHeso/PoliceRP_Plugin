@@ -6,22 +6,10 @@
 
 The PoliceRP Plugin is a simple Minecraft plugin designed for PoliceRP servers. The plugin provides a punishment system and additional functionality for managing the police force on the server.
 
-****Features****
+****INFO****
 
 
-> Punishment system for managing offenses
-> 
-> Recruitment system for adding new members to factions (EMS, PD, Fire, Army)
-> 
-> Configurable values for plugin settings
-
-**Permissions**
-1. policerp.punish:
-   > Description: Allows access to police-related commands.
-   > Default: false
-2. policerp.chief:
-   > Description: Allows access to police-related commands.
-   > Default: false
+> All updated guidance now only at https://www.spigotmc.org/resources/policerp-also-support-for-ems-firedept-army.113732/
 
 **Installation**
 1. Download the latest release of the PoliceRP plugin.
