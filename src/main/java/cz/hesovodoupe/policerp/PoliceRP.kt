@@ -6,6 +6,7 @@ import cz.hesovodoupe.policerp.commands.jobs.hireCommandTab
 import cz.hesovodoupe.policerp.commands.jobs.licenseCommand
 import cz.hesovodoupe.policerp.commands.licenseCommandTab
 import cz.hesovodoupe.policerp.commands.prestupek
+import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
@@ -47,6 +48,8 @@ class PoliceRP : JavaPlugin(), Listener {
         loadDbprestupky()
         loadDbGuns()
         server.pluginManager.registerEvents(this, this)
+        val pluginId = 20464
+        val metrics = Metrics(this, pluginId)
 
 
         ConfigManager.emsHireValue = config.getString("nabor.ems").toString()
