@@ -1,6 +1,5 @@
 package cz.hesovodoupe.policerp
 
-import cz.hesovodoupe.policerp.Metrics.SimplePie
 import cz.hesovodoupe.policerp.commands.jobs.fireCommand
 import cz.hesovodoupe.policerp.commands.jobs.hireCommand
 import cz.hesovodoupe.policerp.commands.jobs.hireCommandTab
@@ -49,9 +48,6 @@ class PoliceRP : JavaPlugin(), Listener {
         loadDbGuns()
         server.pluginManager.registerEvents(this, this)
 
-        val pluginId = 113732
-        val metrics = Metrics(this, pluginId)
-        metrics
 
         ConfigManager.emsHireValue = config.getString("nabor.ems").toString()
         ConfigManager.pdHireValue = config.getString("nabor.pd").toString()
