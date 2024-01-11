@@ -1,10 +1,17 @@
 name: PoliceRP
 version: '${version}'
 main: cz.hesovodoupe.policerp.PoliceRP
-api-version: '1.19'
+api-version: '1.16'
 authors: [Heso]
 description: Command for POLICE RP
 website: snezik.cz
+
+depend:
+  - "LuckPerms"
+
+softdepend:
+  - "CMI"
+  - "Essentials"
 
 commands:
   felony:
@@ -39,10 +46,6 @@ permissions:
     default: false
   policerp.chief:
     description: "Slouží pro vedení policie"
-    default: false
-  firerp.chief:
-    default: false
-  ems.chief:
     default: false
   wanted:
     description: "Works just fine"

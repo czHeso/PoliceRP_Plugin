@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PoliceRP.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PoliceRP.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.PoliceRP.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cz.hesovodoupe.PoliceRP.main.iml" />
     </modules>
   </component>
 </project>

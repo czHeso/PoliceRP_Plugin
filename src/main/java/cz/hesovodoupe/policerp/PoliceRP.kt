@@ -43,8 +43,10 @@ class PoliceRP : JavaPlugin(), Listener {
         println("Thank you for using our simple punishment system for PoliceRP")
         println("Note that police officers must have the right to PoliceRP.punish")
 
-        saveDefaultConfig()
         registerCommands()
+
+
+        saveDefaultConfig()
         loadDbprestupky()
         loadDbGuns()
         server.pluginManager.registerEvents(this, this)
@@ -69,13 +71,12 @@ class PoliceRP : JavaPlugin(), Listener {
 
     override fun onDisable() {
         getLogger().info("Plugin is shutting down")
-        saveDbprestupky()
-        saveDbGun()
     }
 
     private fun registerCommands() {
         getCommand("felony")?.setExecutor(prestupek)
         getCommand("release")?.setExecutor(prestupek)
+
 
         getCommand("hire")?.setExecutor(hireCommand)
         getCommand("hire")?.setTabCompleter(hireCommandTab)
